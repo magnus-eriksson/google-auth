@@ -1,6 +1,7 @@
 {
     "name": "maer/google-auth",
     "description": "Laravel 4 wrapper for the league/oauth2-client package. Simple white/blacklist specific e-mails or entire domains.",
+    "keywords": ["google","oauth2", "laravel"],
     "authors": [
         {
             "name": "Magnus Eriksson",
