@@ -1,0 +1,21 @@
+{
+    "name": "maer/google-auth",
+    "description": "Laravel 4 wrapper for the league/oauth2-client package. Simple white/blacklist specific e-mails or entire domains.",
+    "authors": [
+        {
+            "name": "Magnus Eriksson",
+            "email": "maer@reloop.se"
+        }
+    ],
+    "require": {
+        "php": ">=5.3.0",
+        "illuminate/support": "4.1.*",
+        "league/oauth2-client": "dev-master"
+    },
+    "autoload": {
+        "psr-0": {
+            "Maer\\GoogleAuth\\": "src/"
+        }
+    },
+    "minimum-stability": "stable"
+}
