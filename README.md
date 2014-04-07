@@ -21,7 +21,7 @@ Run `composer require maer/google-auth dev-master` or add this to your composer.
 You can, and should, change `dev-master` to the current latest.
 
 
-Usage
+Setup
 -----
 Register the service provider in `app/config/app.php`:
 ```php
@@ -61,4 +61,36 @@ return array(
     */
     'disallow'     => array(),
 );
+```
+
+Usage
+-----
+This is a simple example of how you use it. You should put this in a controller with depency injection instead.
+
+```php
+Route::get('/', function()
+{
+    echo '<a href="/google-auth">Authorize</a>';
+});
+
+Route::get('/google-auth', function(){
+
+    // Get the instance of GoogleAuth
+    $Auth = App::make('Maer\GoogleAuth\GoogleAuth');
+
+    // This call will redirect the user to Googles Auth screen
+    return $Auth->authorize();
+
+});
+
+Route::get('/google-auth/callback', function(){
+
+    // Get the instance of GoogleAuth
+    $Auth = App::make('Maer\GoogleAuth\GoogleAuth');
+    
+    // If the authorization fails, this method will return null.
+    // Now it's up to you to decide what to do with the user object.
+    $User = $Auth->callback();    
+
+});
 ```
