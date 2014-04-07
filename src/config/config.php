@@ -8,7 +8,7 @@ return array(
 
     'client_id'    => 'YOUR_GOOGLE_CLIENT_ID',
     'secret'       => 'YOUR_GOOGLE_CLIENT_SECRET',
-    'callback_url' => 'http://full-url-to-callback',
+    'callback_url' => 'YOUR_GOOGLE_CLIENT_CALLBACK_URL',
 
     /*
     * Allowed accounts
