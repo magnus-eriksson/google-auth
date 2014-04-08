@@ -11,12 +11,12 @@
     "require": {
         "php": ">=5.3.0",
         "illuminate/support": "4.1.*",
-        "league/oauth2-client": "dev-master"
+        "league/oauth2-client": "dev-master as 0.3"
     },
     "autoload": {
         "psr-0": {
             "Maer\\GoogleAuth\\": "src/"
         }
     },
-    "minimum-stability": "dev"
+    "minimum-stability": "stabil"
 }
