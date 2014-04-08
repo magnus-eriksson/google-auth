@@ -8,10 +8,16 @@
             "email": "maer@reloop.se"
         }
     ],
+    "repositories": [
+        {
+            "type": "vcs",
+            "url": "https://github.com/thephpleague/oauth2-client.git"
+        }
+    ],    
     "require": {
         "php": ">=5.3.0",
         "illuminate/support": "4.1.*",
-        "league/oauth2-client": "dev-master"
+        "league-temp/oauth2-client": "dev-master#91bd27b18477b5c302705ffb89ecd789a0f9142d"
     },
     "autoload": {
         "psr-0": {
