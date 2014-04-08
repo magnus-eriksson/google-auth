@@ -19,5 +19,6 @@
         "psr-0": {
             "Maer\\GoogleAuth\\": "src/"
         }
-    }
+    },
+    "minimum-stability": "dev"
 }
