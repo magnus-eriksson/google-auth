@@ -18,5 +18,5 @@
             "Maer\\GoogleAuth\\": "src/"
         }
     },
-    "minimum-stability": "stabil"
+    "minimum-stability": "stable"
 }
