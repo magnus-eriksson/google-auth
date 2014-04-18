@@ -31,7 +31,7 @@ Setup
 Register the service provider in `app/config/app.php`:
 ```php
 'providers' => array(
-    'Maer\GoogleAuth\GoogleAuthServiceProvider',
+    'Maer\GoogleAuth\ServiceProvider',
 )
 ```
 
