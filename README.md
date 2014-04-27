@@ -11,14 +11,10 @@ Installation
 
 Best way is to use [composer](https://getcomposer.org/download/).
 
-Since a package dependency can't be unstable (composer will fail most of the times), you need to add the league/oauth2-client-package manually for the time being.
-The oauth-client-team are working on it, though.
-
-So, add both the oauth2-client and this package to your `composer.json`:
+Add the following to your `composer.json`:
 ```
 {
     "require": {
-        "league/oauth2-client": "0.1",
         "maer/google-auth": "dev-master"
     }
 }
