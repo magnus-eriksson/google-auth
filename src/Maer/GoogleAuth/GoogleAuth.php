@@ -69,9 +69,11 @@ class GoogleAuth
         $parts   = explode('@', $email);
         $user    = $parts[0];
         $domain  = $parts[1];
-        $allowed = false;
 
         $whitelist = Config::get('google-auth::allow', array());
+
+        // If $allowed is empty, allow all
+        $allowed = $whitelist? false: true;
 
         foreach($whitelist as $valid) {
             if ($valid == $domain || $valid == $domain) {
