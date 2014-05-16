@@ -34,7 +34,7 @@ class GoogleAuth
         if ($code) {
             try {
                 $t = $this->provider->getAccessToken('authorization_code', array('code' => $code));
-                
+
                 try {
                     $authUser = $this->provider->getUserDetails($t);
                     if ($authUser && $this->validateEmail($authUser->email)) {
@@ -50,9 +50,9 @@ class GoogleAuth
                         $user->imageUrl    = $authUser->imageUrl;
                         $user->urls        = $authUser->urls;
                     }
-            
+
                 } catch (Exception $e) {}
-            
+
             } catch (Exception $e) {}
         }
 
@@ -76,7 +76,7 @@ class GoogleAuth
         $allowed = $whitelist? false: true;
 
         foreach($whitelist as $valid) {
-            if ($valid == $domain || $valid == $domain) {
+            if ($valid == $email || $valid == $domain) {
                 $allowed = true;
                 break;
             }
