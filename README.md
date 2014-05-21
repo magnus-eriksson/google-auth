@@ -2,7 +2,7 @@ Google Auth for Laravel 4
 ======================
 
 Add Google auth quick and painless in your Laravel 4 application.
-It is basically a wrapper for the [thephpleague/oauth2-client](https://github.com/thephpleague/oauth2-client) package. The original package is dead simple to use, but this package adds a simpe access control.
+It is basically a wrapper for the [thephpleague/oauth2-client](https://github.com/thephpleague/oauth2-client) package. The original package is dead simple to use, but this package adds a simple access control.
 
 You can decide which Google accounts/domains are allowed or blocked. Well, I have used this several times anyway and it's been handy. It's as easy as eating pancakes!
 
@@ -93,6 +93,10 @@ Route::get('/google-auth/callback', function(){
     // If the authorization fails, this method will return null.
     // Now it's up to you to decide what to do with the user object.
     $User = $Auth->callback();    
+
+    // You can also ask for the access token, regardless if you use
+    // the callback-method or not.
+    $token = $Auth->getAccessToken();
 
 });
 ```

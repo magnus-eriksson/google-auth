@@ -3,10 +3,12 @@
 use App;
 use Config;
 use Input;
+use League\OAuth2\Client\Token\AccessToken;
 
 class GoogleAuth
 {
     private $provider;
+    private $accessTokenObject;
 
     public function __construct()
     {
@@ -23,6 +25,42 @@ class GoogleAuth
     }
 
     /**
+     * Get the access token
+     * @return string|null
+     */
+    public function getAccessToken()
+    {
+        $tokenObject = $this->getAccessTokenObject();
+        if (is_object($tokenObject) 
+            && $tokenObject instanceof AccessToken) {
+            return $tokenObject->accessToken;
+        }
+
+        return null;
+    }
+
+    /**
+     * Get the League\OAuth2\Client\Token\AccessToken
+     * @return League\OAuth2\Client\Token\AccessToken|null
+     */
+    private function getAccessTokenObject()
+    {
+        if (!$this->accessTokenObject) {
+            $code = Input::get('code');
+            if ($code) {
+                try {
+                    $this->accessTokenObject = $this->provider->getAccessToken(
+                        'authorization_code', 
+                        array('code' => $code)
+                    );
+                } catch (Exception $e) {}
+            }
+        }
+
+        return $this->accessTokenObject;
+    }
+
+    /**
      * Get authorized user info
      * @return Maer\GoogleAuth\User|null
      */
@@ -32,11 +70,11 @@ class GoogleAuth
         $user = null;
 
         if ($code) {
-            try {
-                $t = $this->provider->getAccessToken('authorization_code', array('code' => $code));
+            $accessToken = $this->getAccessTokenObject();
 
+            if ($accessToken) {
                 try {
-                    $authUser = $this->provider->getUserDetails($t);
+                    $authUser = $this->provider->getUserDetails($accessToken);
                     if ($authUser && $this->validateEmail($authUser->email)) {
                         $user = new User;
                         $user->uid         = $authUser->uid;
@@ -52,8 +90,7 @@ class GoogleAuth
                     }
 
                 } catch (Exception $e) {}
-
-            } catch (Exception $e) {}
+            }
         }
 
         return $user;
